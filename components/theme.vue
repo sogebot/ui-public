@@ -68,10 +68,10 @@ export default defineComponent({
       const user = await isUserLoggedIn(false, false);
       if (user) {
         socket.emit('theme::get', { userId: user.id }, (err: string | null, themeArg: string | null) => {
-          //loadTheme(themeArg || get(context.root.$store.state.configuration, 'core.ui.theme', 'light'));
+          loadTheme(themeArg || get((context.root as any).$store.state.configuration, 'core.ui.theme', 'light'));
         });
       } else {
-        //loadTheme(localStorage.getItem('theme') || get(context.root.$store.state.configuration, 'core.ui.theme', 'light'));
+        loadTheme(localStorage.getItem('theme') || get((context.root as any).$store.state.configuration, 'core.ui.theme', 'light'));
       }
     });
     return {

@@ -94,7 +94,6 @@ export default defineComponent({
     };
 
     const moveTo = async () => {
-      console.log('moveToTriggered')
       const scroll = await (ctx.root as any).$vuetify.goTo(playlistRef.value as HTMLElement);
       if (!scroll) {
         setTimeout(() => {
