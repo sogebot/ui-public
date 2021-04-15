@@ -72,7 +72,7 @@ export default defineComponent({
       });
 
       setInterval(() => {
-        //theme.value = (localStorage.getItem('theme') || get(ctx.root.$store.state, 'configuration.core.ui.theme', 'light'));
+        theme.value = (localStorage.getItem('theme') || get(ctx.root.$store.state, 'configuration.core.ui.theme', 'light'));
       }, 100);
     });
 
