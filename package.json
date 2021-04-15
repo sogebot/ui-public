@@ -1,6 +1,6 @@
 {
   "name": "@sogebot/ui-public",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "sogehige@gmail.com",
   "description": "Nuxt.js version of ui-public",
   "scripts": {
@@ -18,7 +18,7 @@
     "*.{css,vue}": "stylelint"
   },
   "dependencies": {
-    "@sogebot/ui-helpers": "^1.6.1",
+    "@sogebot/ui-helpers": "^1.6.2",
     "core-js": "^3.10.1",
     "nuxt": "^2.15.4"
   },
