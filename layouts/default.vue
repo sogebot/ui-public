@@ -26,7 +26,7 @@
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-  middleware: 'isBotStarted',
+  middleware: ['isBotStarted', 'theme'],
   components: {
     navbar: () => import('../components/navbar/navbar.vue'),
     twitch: () => import('../components/twitch.vue'),

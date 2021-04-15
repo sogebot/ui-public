@@ -23,7 +23,7 @@ import { mdiMoonWaxingCrescent, mdiWeatherSunny } from '@mdi/js';
 import { getSocket } from '@sogebot/ui-helpers/socket';
 import { isUserLoggedIn } from '@sogebot/ui-helpers/isUserLoggedIn';
 import {
-  defineComponent, onMounted, ref,
+  defineComponent, ref,
 } from '@vue/composition-api';
 import Vue from 'vue';
 import { get } from 'lodash-es';
@@ -63,17 +63,6 @@ export default defineComponent({
       }
       localStorage.setItem('theme', themeArg);
     };
-
-    onMounted(async () => {
-      const user = await isUserLoggedIn(false, false);
-      if (user) {
-        socket.emit('theme::get', { userId: user.id }, (err: string | null, themeArg: string | null) => {
-          loadTheme(themeArg || get((context.root as any).$store.state.configuration, 'core.ui.theme', 'light'));
-        });
-      } else {
-        loadTheme(localStorage.getItem('theme') || get((context.root as any).$store.state.configuration, 'core.ui.theme', 'light'));
-      }
-    });
     return {
       theme, toggleTheme, mdiWeatherSunny, mdiMoonWaxingCrescent,
     };

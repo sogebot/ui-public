@@ -4,8 +4,11 @@ import { getTranslations,getConfiguration } from '@sogebot/ui-helpers/socket'
 import { populateListOf } from '@sogebot/ui-helpers/getListOf'
 import { setLocale } from '@sogebot/ui-helpers/dayjsHelper'
 
-export default function ({ store }: { store: any }) {
+export default function ({ store, app }: { store: any, app: any }) {
   (async function init () {
+    // force theme
+    app.vuetify.framework.theme.dark = localStorage.theme === 'dark'
+
     await isBotStarted(store)
     store.commit('setLoggedUser', await isUserLoggedIn(false, false));
     store.commit('setConfiguration', await getConfiguration());
