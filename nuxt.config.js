@@ -18,10 +18,6 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
-  router: {
-    mode: 'hash',
-  },
-
   env: {
     isNuxtDev: process.env.NODE_ENV === 'development'
   },
