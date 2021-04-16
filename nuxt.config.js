@@ -6,7 +6,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s',
-    title: 'sogeBot - login page',
+    title: 'sogeBot public page',
     htmlAttrs: {
       lang: 'en'
     },

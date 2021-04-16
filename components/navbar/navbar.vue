@@ -34,17 +34,23 @@ const socket = getSocket('/', true);
 const navmenu = defineAsyncComponent({ loader: () => import('./menu.vue') });
 const user = defineAsyncComponent({ loader: () => import('../user.vue') });
 
+let a = 'b'
 export default defineComponent({
   components: {
     navmenu,
     user,
+  },
+  head() {
+    return {
+      title: `${this.channelName as string}'s channel public page`,
+    }
   },
   setup(props, ctx) {
     const name = ref('');
     const channelName = ref('');
 
     const drawer = ref(!(ctx.root as any).$vuetify.breakpoint.mobile);
-
+    console.log({ctx})
     onMounted(() => {
       socket.emit('name', (recvName: string) => name.value = recvName );
       socket.emit('channelName', (recvName: string) => channelName.value = recvName );
