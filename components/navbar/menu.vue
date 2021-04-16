@@ -29,8 +29,6 @@ import {
 
 type menuPublic = { name: string; id: string }[];
 
-const socket = getSocket('/');
-
 const icons = new Map<string, string>([
   ['dashboard', mdiViewDashboard],
   ['playlist', mdiPlaylistMusic],
@@ -43,8 +41,7 @@ export default defineComponent({
     const menu = ref([] as menuPublic);
 
     onMounted(async () => {
-
-      socket.emit('menu::public', (err: string | null, data: menuPublic) => {
+      getSocket('/').emit('menu::public', (err: string | null, data: menuPublic) => {
         if (err) {
           return console.error(err);
         }

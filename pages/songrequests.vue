@@ -45,8 +45,6 @@ import translate from '@sogebot/ui-helpers/translate';
 import { getSocket } from '@sogebot/ui-helpers/socket';
 import { ButtonStates } from '@sogebot/ui-helpers/buttonStates';
 
-const socket = getSocket('/systems/songs', true);
-
 export default defineComponent({
   setup(props, ctx) {
     const requests = ref([] as SongRequestInterface[]);
@@ -84,7 +82,7 @@ export default defineComponent({
     const refresh = () => {
       state.value.loading = ButtonStates.progress;
       setInterval(() => {
-        socket.emit('songs::getAllRequests', {}, (err: string | null, items: SongRequestInterface[]) => {
+        getSocket('/systems/songs', true).emit('songs::getAllRequests', {}, (err: string | null, items: SongRequestInterface[]) => {
           console.debug('Loaded', { requests: items });
           requests.value = items;
           state.value.loading = ButtonStates.success;

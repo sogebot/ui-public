@@ -175,7 +175,6 @@ import translate from '@sogebot/ui-helpers/translate';
 import type { PermissionsInterface } from '../.bot/src/bot/database/entity/permissions';
 import type { UserInterface } from '../.bot/src/bot/database/entity/user';
 
-const socket = getSocket('/core/users', true);
 let interval = 0;
 
 const theme = defineAsyncComponent({ loader: () => import('./theme.vue') });
@@ -207,7 +206,7 @@ export default defineComponent({
     onUnmounted(() => clearInterval(interval));
 
     const logout = () => {
-      socket.emit('logout', {
+      getSocket('/core/users', true).emit('logout', {
         accessToken:  localStorage.getItem('accessToken'),
         refreshToken: localStorage.getItem('refreshToken'),
       });
@@ -222,7 +221,7 @@ export default defineComponent({
       if (typeof (context.root as any).$store.state.loggedUser === 'undefined'|| (context.root as any).$store.state.loggedUser === null) {
         return;
       }
-      socket.emit('viewers::findOne', (context.root as any).$store.state.loggedUser.id, (err: string| number, recvViewer: Readonly<Required<UserInterface>> & { aggregatedTips: number; aggregatedBits: number; permission: PermissionsInterface }) => {
+      getSocket('/core/users', true).emit('viewers::findOne', (context.root as any).$store.state.loggedUser.id, (err: string| number, recvViewer: Readonly<Required<UserInterface>> & { aggregatedTips: number; aggregatedBits: number; permission: PermissionsInterface }) => {
         if (err) {
           return console.error(err);
         }
@@ -236,8 +235,8 @@ export default defineComponent({
       });
     };
 
-    const joinBot = () => socket.emit('joinBot');
-    const leaveBot = () => socket.emit('leaveBot');
+    const joinBot = () => getSocket('/core/users', true).emit('joinBot');
+    const leaveBot = () => getSocket('/core/users', true).emit('leaveBot');
 
     return {
       menu, defaultPermissions, isViewerLoaded, viewer, viewerIs, isPublicPage, logout, login, translate, joinBot, leaveBot,

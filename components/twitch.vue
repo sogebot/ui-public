@@ -59,15 +59,13 @@ import {
 } from '@vue/composition-api';
 import { get } from 'lodash-es';
 
-const socket = getSocket('/widgets/chat', true);
-
 export default defineComponent({
   setup(props, ctx) {
     const room = ref('');
     const theme = ref('light');
 
     onMounted(() => {
-      socket.emit('room', (err: string | null, _room: string) => {
+      getSocket('/widgets/chat', true).emit('room', (err: string | null, _room: string) => {
         room.value = _room;
       });
 

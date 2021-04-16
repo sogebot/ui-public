@@ -44,8 +44,6 @@ import translate from '@sogebot/ui-helpers/translate';
 import { getSocket } from '@sogebot/ui-helpers/socket';
 import { ButtonStates } from '@sogebot/ui-helpers/buttonStates';
 
-const socket = getSocket('/systems/songs', true);
-
 export default defineComponent({
   setup(props, ctx) {
     const playlist = ref([] as SongPlaylistInterface[]);
@@ -69,11 +67,11 @@ export default defineComponent({
 
     const refreshPlaylist = () => {
       state.value.loading = ButtonStates.progress;
-      socket.emit('current.playlist.tag', (err1: string | null, tag: string) => {
+      getSocket('/systems/songs', true).emit('current.playlist.tag', (err1: string | null, tag: string) => {
         if (err1) {
           return console.error(err1);
         }
-        socket.emit('find.playlist', {
+        getSocket('/systems/songs', true).emit('find.playlist', {
           perPage: (options.value.itemsPerPage ?? 1),
           page:    ((options.value.page ?? 1) - 1),
           tag,

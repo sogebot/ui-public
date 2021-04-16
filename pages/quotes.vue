@@ -51,7 +51,6 @@ import { getSocket } from '@sogebot/ui-helpers/socket';
 import { ButtonStates } from '@sogebot/ui-helpers/buttonStates';
 import { dayjs } from '@sogebot/ui-helpers/dayjsHelper';
 
-const socket = getSocket('/systems/quotes', true);
 export default defineComponent({
   setup(props, ctx) {
     const items = ref([] as QuotesInterface[]);
@@ -80,7 +79,7 @@ export default defineComponent({
 
     onMounted(() => {
       state.value.loading = ButtonStates.progress;
-      socket.emit('quotes:getAll', {}, (err: string | null, itemsGetAll: QuotesInterface[]) => {
+      getSocket('/systems/quotes', true).emit('quotes:getAll', {}, (err: string | null, itemsGetAll: QuotesInterface[]) => {
         console.debug('Loaded', { items });
         items.value = itemsGetAll;
         state.value.loading = ButtonStates.success;

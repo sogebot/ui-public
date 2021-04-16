@@ -29,8 +29,6 @@ import { isMobile } from '@sogebot/ui-helpers/isMobile';
 import { getSocket } from '@sogebot/ui-helpers/socket';
 import translate from '@sogebot/ui-helpers/translate';
 
-const socket = getSocket('/', true);
-
 const navmenu = defineAsyncComponent({ loader: () => import('./menu.vue') });
 const user = defineAsyncComponent({ loader: () => import('../user.vue') });
 
@@ -52,8 +50,8 @@ export default defineComponent({
     const drawer = ref(!(ctx.root as any).$vuetify.breakpoint.mobile);
     console.log({ctx})
     onMounted(() => {
-      socket.emit('name', (recvName: string) => name.value = recvName );
-      socket.emit('channelName', (recvName: string) => channelName.value = recvName );
+      getSocket('/', true).emit('name', (recvName: string) => name.value = recvName );
+      getSocket('/', true).emit('channelName', (recvName: string) => channelName.value = recvName );
     });
 
     return {
