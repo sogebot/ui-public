@@ -45,7 +45,7 @@ import {
   defineComponent, onMounted, ref,
 } from '@vue/composition-api';
 
-import type { QuotesInterface } from '../../.bot/src/bot/database/entity/quotes';
+import type { QuotesInterface } from '../.bot/src/bot/database/entity/quotes';
 import translate from '@sogebot/ui-helpers/translate';
 import { getSocket } from '@sogebot/ui-helpers/socket';
 import { ButtonStates } from '@sogebot/ui-helpers/buttonStates';

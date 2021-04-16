@@ -1,6 +1,6 @@
 {
   "name": "@sogebot/ui-public",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "author": "sogehige@gmail.com",
   "description": "Nuxt.js version of ui-public",
   "scripts": {
