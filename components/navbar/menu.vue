@@ -6,7 +6,7 @@
     <v-list-item
       v-for="item of menu"
       :key="item.name"
-      :to="'/public/' + item.id.replace(/\./g, '/')"
+      :to="item.id.replace(/\./g, '/')"
       nuxt
     >
       <v-list-item-icon>
