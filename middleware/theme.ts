@@ -4,17 +4,21 @@ import { get } from 'lodash-es';
 
 export default function ({ store, app }: { store: any, app: any }) {
   (async function init () {
-    if (!store.setUILoaded) {
+    if (!store.state.isUILoaded) {
       setTimeout(() => init(), 10);
       return;
     }
+    const socket = getSocket('/core/users', true);
     const user = await isUserLoggedIn(false, false);
 
     if (user) {
-      getSocket('/core/users', true).emit('theme::get', { userId: user.id }, (_: string | null, themeArg: string | null) => {
+      console.log('user got')
+      socket.emit('theme::get', { userId: user.id }, (_: string | null, themeArg: string | null) => {
         localStorage.setItem('theme', themeArg || get(store.state.configuration, 'core.ui.theme', 'light'));
         app.vuetify.framework.theme.dark = localStorage.theme === 'dark';
       });
+    } else {
+      console.log('user not found?')
     }
     app.vuetify.framework.theme.dark = localStorage.theme === 'dark';
   })();
