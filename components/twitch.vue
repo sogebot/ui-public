@@ -60,12 +60,16 @@ import {
 import { get } from 'lodash-es';
 
 export default defineComponent({
-  setup(props, ctx) {
+  setup (_, ctx) {
     const room = ref('');
     const theme = ref('light');
 
     onMounted(() => {
       getSocket('/widgets/chat', true).emit('room', (err: string | null, _room: string) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
         room.value = _room;
       });
 

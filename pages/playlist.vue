@@ -35,17 +35,17 @@
 
 <script lang="ts">
 import { mdiMagnify } from '@mdi/js';
+import { ButtonStates } from '@sogebot/ui-helpers/buttonStates';
+import { getSocket } from '@sogebot/ui-helpers/socket';
+import translate from '@sogebot/ui-helpers/translate';
 import {
   defineComponent, onMounted, ref, watch,
 } from '@vue/composition-api';
 
 import type { SongPlaylistInterface } from '../.bot/src/bot/database/entity/song';
-import translate from '@sogebot/ui-helpers/translate';
-import { getSocket } from '@sogebot/ui-helpers/socket';
-import { ButtonStates } from '@sogebot/ui-helpers/buttonStates';
 
 export default defineComponent({
-  setup(props, ctx) {
+  setup (_, ctx) {
     const playlist = ref([] as SongPlaylistInterface[]);
     const search = ref('');
 
@@ -91,7 +91,7 @@ export default defineComponent({
       });
     };
 
-    const moveTo = async () => {
+    const moveTo = async () => {
       const scroll = await (ctx.root as any).$vuetify.goTo(playlistRef.value as HTMLElement);
       if (!scroll) {
         setTimeout(() => {

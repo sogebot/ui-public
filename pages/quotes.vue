@@ -41,18 +41,18 @@
 
 <script lang="ts">
 import { mdiMagnify } from '@mdi/js';
+import { ButtonStates } from '@sogebot/ui-helpers/buttonStates';
+import { dayjs } from '@sogebot/ui-helpers/dayjsHelper';
+import { getSocket } from '@sogebot/ui-helpers/socket';
+import translate from '@sogebot/ui-helpers/translate';
 import {
   defineComponent, onMounted, ref,
 } from '@vue/composition-api';
 
 import type { QuotesInterface } from '../.bot/src/bot/database/entity/quotes';
-import translate from '@sogebot/ui-helpers/translate';
-import { getSocket } from '@sogebot/ui-helpers/socket';
-import { ButtonStates } from '@sogebot/ui-helpers/buttonStates';
-import { dayjs } from '@sogebot/ui-helpers/dayjsHelper';
 
 export default defineComponent({
-  setup(props, ctx) {
+  setup (_, ctx) {
     const items = ref([] as QuotesInterface[]);
     const quotesRef = ref(null as Element | null);
     const search = ref('');
@@ -68,7 +68,7 @@ export default defineComponent({
       { value: 'quotedByName', text: translate('systems.quotes.by.name') },
     ];
 
-    const moveTo = async () => {
+    const moveTo = async () => {
       const scroll = await (ctx.root as any).$vuetify.goTo(quotesRef.value as HTMLElement);
       if (!scroll) {
         setTimeout(() => {
@@ -80,6 +80,10 @@ export default defineComponent({
     onMounted(() => {
       state.value.loading = ButtonStates.progress;
       getSocket('/systems/quotes', true).emit('quotes:getAll', {}, (err: string | null, itemsGetAll: QuotesInterface[]) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
         console.debug('Loaded', { items });
         items.value = itemsGetAll;
         state.value.loading = ButtonStates.success;

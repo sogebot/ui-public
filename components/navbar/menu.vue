@@ -37,10 +37,10 @@ const icons = new Map<string, string>([
 ]);
 
 export default defineComponent({
-  setup() {
+  setup () {
     const menu = ref([] as menuPublic);
 
-    onMounted(async () => {
+    onMounted(() => {
       getSocket('/').emit('menu::public', (err: string | null, data: menuPublic) => {
         if (err) {
           return console.error(err);
