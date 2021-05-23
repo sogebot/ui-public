@@ -41,7 +41,7 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify',
+    ['@nuxtjs/vuetify', { treeShake: true }],
   ],
 
   vuetify: {
@@ -53,7 +53,7 @@ export default {
   modules: [],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: { extractCSS: true },
 
   router: { mode: 'hash' },
 };
