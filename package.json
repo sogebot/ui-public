@@ -7,7 +7,6 @@
     "@nuxtjs/vuetify/**/sass": "1.32.12"
   },
   "scripts": {
-    "postinstall": "npx simple-git-hooks",
     "prepublishOnly": "npm run generate",
     "dev": "nuxt",
     "build": "nuxt build",
@@ -22,7 +21,7 @@
     "*.{css,vue}": "stylelint"
   },
   "simple-git-hooks": {
-    "pre-commit": "echo \"$2\" && npx simple-git-hooks && npx lint-staged",
+    "pre-commit": "npx simple-git-hooks && npx lint-staged",
     "commit-msg": "node ./.bot/tools/pre-commit-message.js $1 $2 $3",
     "preserveUnused": true
   },
