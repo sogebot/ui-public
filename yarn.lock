@@ -9136,7 +9136,7 @@ sass-loader@^10.1.1:
     schema-utils "^3.0.0"
     semver "^7.3.2"
 
-sass@1.32.12, sass@^1.32.4:
+sass@^1.32.4:
   version "1.32.12"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.32.12.tgz#a2a47ad0f1c168222db5206444a30c12457abb9f"
   integrity sha512-zmXn03k3hN0KaiVTjohgkg98C3UowhL1/VSGdj4/VAAiMKGQOE80PFPxFP2Kyq0OUskPKcY5lImkhBKEHlypJA==
@@ -10314,9 +10314,9 @@ typedarray@^0.0.6:
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
 typeorm@^0.2.32:
-  version "0.2.32"
-  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.32.tgz#544dbfdfe0cd0887548d9bcbd28527ea4f4b3c9b"
-  integrity sha512-LOBZKZ9As3f8KRMPCUT2H0JZbZfWfkcUnO3w/1BFAbL/X9+cADTF6bczDGGaKVENJ3P8SaKheKmBgpt5h1x+EQ==
+  version "0.2.33"
+  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.33.tgz#0ed0253bc0d5bbe3575bd53672d83d8e8fec0bca"
+  integrity sha512-JjF8Y5gZxbLL1A4ARENgn+GegM4EyqUmQ7VKD7cBcQU0g3snGcOfUnFh7X5pS9I6KfBhRlvwamvjK1zlLg8+ug==
   dependencies:
     "@sqltools/formatter" "^1.2.2"
     app-root-path "^3.0.0"
