@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.16](https://github.com/sogebot/ui-public/compare/v1.0.15...v1.0.16) (2021-06-07)
+
+
+### Bug Fixes
+
+* **user:** update logout path ([25af92b](https://github.com/sogebot/ui-public/commit/25af92b689379c9e54c28102d70d924dccddfa34))
+
 ### 1.0.15 (2021-06-02)
 
 
