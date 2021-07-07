@@ -24,7 +24,7 @@
     "preserveUnused": true
   },
   "dependencies": {
-    "@sogebot/ui-helpers": "^1.14.1",
+    "@sogebot/ui-helpers": "^2.3.3",
     "core-js": "^3.13.1",
     "nuxt": "^2.15.6"
   },
