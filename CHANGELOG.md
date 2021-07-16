@@ -18,6 +18,10 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### 1.0.15 (2021-06-02)
 
+### Features
+
+* log current version in console ([785544e](https://github.com/sogebot/ui-public/commit/785544e2dfbc3e7b069405e2b4c888ed29428b65))
+
 
 ### Bug Fixes
 
