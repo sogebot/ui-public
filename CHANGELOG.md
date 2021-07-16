@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/sogebot/ui-public/compare/v1.0.17...v1.2.0) (2021-07-16)
+
+
+### Features
+
+* log current version in console ([3649c7f](https://github.com/sogebot/ui-public/commit/3649c7fbf021f96518bbe38844bf18b19fb17caa))
+
 ### [1.0.17](https://github.com/sogebot/ui-public/compare/v1.0.16...v1.0.17) (2021-06-07)
 
 
