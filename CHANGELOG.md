@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/sogebot/ui-public/compare/v1.2.0...v2.0.0) (2021-08-16)
+
+
+### Features
+
+* **menu:** get menu from REST call ([73d2e4c](https://github.com/sogebot/ui-public/commit/73d2e4ccb4153aabdc060d60cc3a54dadee2d1e0))
+
 ## [1.2.0](https://github.com/sogebot/ui-public/compare/v1.0.17...v1.2.0) (2021-07-16)
 
 
