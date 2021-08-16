@@ -21,11 +21,10 @@
 import {
   mdiFormatQuoteClose, mdiPlaylistMusic, mdiPlaylistPlay, mdiViewDashboard,
 } from '@mdi/js';
-import { getSocket } from '@sogebot/ui-helpers/socket';
-import translate from '@sogebot/ui-helpers/translate';
 import {
-  defineComponent, onMounted, ref,
-} from '@vue/composition-api';
+  defineComponent, onMounted, ref, useContext,
+} from '@nuxtjs/composition-api';
+import translate from '@sogebot/ui-helpers/translate';
 
 type menuPublic = { name: string; id: string }[];
 
@@ -39,21 +38,21 @@ const icons = new Map<string, string>([
 export default defineComponent({
   setup () {
     const menu = ref([] as menuPublic);
+    const context = useContext();
 
     onMounted(() => {
-      getSocket('/').emit('menu::public', (err: string | null, data: menuPublic) => {
-        if (err) {
-          return console.error(err);
-        }
-        console.groupCollapsed('menu::menu::public');
-        console.log({ data });
-        console.groupEnd();
-        for (const item of data.sort((a, b) => {
-          return translate('menu.' + a.name).localeCompare(translate('menu.' + b.name));
-        })) {
-          menu.value.push(item);
-        }
-      });
+      context.$axios.get((process.env.isNuxtDev ? 'http://localhost:20000' : '') + '/api/v1/menu/public')
+        .then((response: { data: { data: any[]; }; }) => {
+          console.groupCollapsed('menu::menu');
+          console.log({ menu: response.data.data });
+          console.groupEnd();
+
+          for (const item of response.data.data.sort((a: { name: string; }, b: { name: string; }) => {
+            return translate('menu.' + a.name).localeCompare(translate('menu.' + b.name));
+          })) {
+            menu.value.push(item);
+          }
+        });
     });
     return {
       menu, translate, icons,

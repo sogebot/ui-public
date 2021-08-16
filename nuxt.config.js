@@ -35,14 +35,12 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/onscroll',
-    '@/plugins/composition-api',
     { src: '@/plugins/log-version.js', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
@@ -50,6 +48,8 @@ export default {
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/vuetify
     ['@nuxtjs/vuetify', { treeShake: true }],
+    // https://composition-api.nuxtjs.org/
+    '@nuxtjs/composition-api/module',
   ],
 
   vuetify: {
@@ -58,7 +58,9 @@ export default {
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: [
+    '@nuxtjs/axios',
+  ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: { extractCSS: true },

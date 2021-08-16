@@ -57,7 +57,7 @@ import { getSocket } from '@sogebot/ui-helpers/socket';
 import {
   computed, defineComponent, onMounted, ref,
 } from '@vue/composition-api';
-import { get } from 'lodash-es';
+import { get } from 'lodash';
 
 export default defineComponent({
   setup (_, ctx) {

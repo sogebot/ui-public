@@ -1,6 +1,6 @@
 import { isUserLoggedIn } from '@sogebot/ui-helpers/isUserLoggedIn';
 import { getSocket } from '@sogebot/ui-helpers/socket';
-import { get } from 'lodash-es';
+import { get } from 'lodash';
 
 export default function ({ store, app }: { store: any, app: any }) {
   (async function init () {
