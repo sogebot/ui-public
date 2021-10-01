@@ -21,7 +21,6 @@
 import {
   mdiFormatQuoteClose, mdiPlaylistMusic, mdiPlaylistPlay, mdiViewDashboard,
 } from '@mdi/js';
-import { getSocket } from '@sogebot/ui-helpers/socket';
 import translate from '@sogebot/ui-helpers/translate';
 import {
   defineComponent, onMounted, ref,
@@ -41,19 +40,27 @@ export default defineComponent({
     const menu = ref([] as menuPublic);
 
     onMounted(() => {
-      getSocket('/').emit('menu::public', (err: string | null, data: menuPublic) => {
-        if (err) {
-          return console.error(err);
-        }
-        console.groupCollapsed('menu::menu::public');
-        console.log({ data });
-        console.groupEnd();
-        for (const item of data.sort((a, b) => {
-          return translate('menu.' + a.name).localeCompare(translate('menu.' + b.name));
-        })) {
-          menu.value.push(item);
-        }
-      });
+      fetch('/graphql', {
+        method:  'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept:         'application/json',
+        },
+        body: JSON.stringify({ query: '{ menuPublic { id name } }' }),
+      })
+        .then(r => r.json())
+        .then((response) => {
+          const data = response.data.menuPublic as menuPublic;
+          console.groupCollapsed('menu::menu::public');
+          console.log({ data });
+          console.groupEnd();
+
+          for (const item of data.sort((a, b) => {
+            return translate('menu.' + a.name).localeCompare(translate('menu.' + b.name));
+          })) {
+            menu.value.push(item);
+          }
+        });
     });
     return {
       menu, translate, icons,

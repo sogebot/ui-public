@@ -20,6 +20,8 @@ export default {
     }],
   },
 
+  server: { port: 3003 },
+
   env: { isNuxtDev: process.env.NODE_ENV === 'development' },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -55,5 +57,8 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: { extractCSS: true },
 
-  router: { mode: 'hash' },
+  router: {
+    mode: 'hash',
+    base: '/public/',
+  },
 };

@@ -24,36 +24,37 @@
     "preserveUnused": true
   },
   "dependencies": {
-    "@sogebot/ui-helpers": "^1.14.1",
-    "core-js": "^3.13.1",
-    "nuxt": "^2.15.6"
+    "@sogebot/ui-helpers": "^2.7.2",
+    "core-js": "^3.18.1",
+    "nuxt": "^2.15.8"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sogebot/ui-public.git"
   },
   "devDependencies": {
-    "@mdi/js": "^5.9.55",
-    "@nuxt/types": "^2.15.6",
+    "vue":"2.6.14",
+    "vue-template-compiler":"2.6.14",
+    "@mdi/js": "^6.1.95",
+    "@nuxt/types": "^2.15.8",
     "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/eslint-config-typescript": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/stylelint-module": "^4.0.0",
-    "@nuxtjs/vuetify": "^1.11.3",
-    "@types/lodash-es": "^4.17.4",
-    "@vue/composition-api": "^1.0.0-rc.10",
+    "@nuxtjs/vuetify": "^1.12.1",
+    "@vue/composition-api": "^1.2.2",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.27.0",
+    "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-vue": "^7.10.0",
-    "lint-staged": "^11.0.0",
-    "simple-git-hooks": "^2.4.1",
-    "standard-version": "^9.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^7.18.0",
+    "lint-staged": "^11.1.2",
+    "simple-git-hooks": "^2.6.1",
+    "standard-version": "^9.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
-    "typeorm": "^0.2.33",
-    "vuetify": "^2.5.3"
+    "typeorm": "^0.2.37",
+    "vuetify": "^2.5.9"
   }
 }
